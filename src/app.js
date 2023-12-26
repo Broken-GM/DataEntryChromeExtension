@@ -1,10 +1,21 @@
-import { copyClipboard } from './helpers/general.js'
+import { copyClipboard, camelize } from './helpers/general.js'
 
 const app = () => {
     const url = document.URL;
-    const itemName = $( ".page-title" ).text();
+    const itemRegex = new RegExp(/https:\/\/www\.dndbeyond\.com\/magic-items\/*/gm)
 
-    copyClipboard(`${itemName},${url}`)
+    if (itemRegex.test(url)) {
+        const itemName = $( ".page-title" ).text().trim();
+        const rarityAndTypString = $( ".details span" ).text().split(",")
+        const rarity = camelize(rarityAndTypString[1].trim())
+        const type = rarityAndTypString[0].trim()
+
+        let sourceStringArray = $( ".item-source" ).text().split(",")
+        sourceStringArray.pop()
+        const source = sourceStringArray.join(" ").trim()
+
+        copyClipboard(`${itemName}	${url}	${rarity}		${type}	${source}	`)   
+    }
 }
 
 export default app
