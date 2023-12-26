@@ -7,7 +7,7 @@ const app = () => {
     if (itemRegex.test(url)) {
         const itemName = $( ".page-title" ).text().trim();
         const rarityAndTypString = $( ".details span" ).text().split(",")
-        const rarity = camelize(rarityAndTypString[1].trim())
+        const rarity = camelize(rarityAndTypString[1].trim()).replace(/\(.*\)/g, '')
         const type = rarityAndTypString[0].trim()
 
         let sourceStringArray = $( ".item-source" ).text().split(",")
