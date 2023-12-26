@@ -11,7 +11,9 @@ const app = () => {
         const type = rarityAndTypString[0].trim()
 
         let sourceStringArray = $( ".item-source" ).text().split(",")
-        sourceStringArray.pop()
+        if (sourceStringArray.length > 1) {
+            sourceStringArray.pop()
+        }
         const source = sourceStringArray.join(" ").trim()
 
         copyClipboard(`${itemName}	${url}	${rarity}		${type}	${source}	`)   

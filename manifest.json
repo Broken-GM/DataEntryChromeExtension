@@ -15,8 +15,5 @@
 			"matches": [ "https://*.dndbeyond.com/*" ]
 		}
 	],
-	"action": {
-		"default_popup": "src/popups/index.html"
-	},
 	"minimum_chrome_version": "92"
 }
