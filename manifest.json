@@ -1,0 +1,22 @@
+{
+	"name": "BrokenGM Data Entry Extension",
+	"description": "A Chrome extension used to help with data entry",
+	"version": "0.1",
+	"manifest_version": 3,
+	"content_scripts": [
+		{
+			"matches": ["https://*.dndbeyond.com/*"],
+			"js": ["libs/jquery.min.js", "index.js"]
+		}
+	],
+	"web_accessible_resources": [
+		{
+			"resources": ["src/*"],
+			"matches": [ "https://*.dndbeyond.com/*" ]
+		}
+	],
+	"action": {
+		"default_popup": "src/popups/index.html"
+	},
+	"minimum_chrome_version": "92"
+}
